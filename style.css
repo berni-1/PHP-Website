@@ -1,0 +1,523 @@
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@300..700&display=swap');
+
+:root {
+    --bg-color: #0d1117;
+    --text-color: #ecf0f1;
+    --form-bg-color: #0f151d;
+    --form-border-color: #7c0000;
+    --form-submit-bg-color: #7c0000;
+    --form-submit-hover-bg-color: #a40000;
+    --header-bg-color: #7c0000;
+    --link-hover-decoration: underline;
+    --navbar-bg-color: #7c0000;
+    --navbar-item-bg-color: transparent;
+    --navbar-item-hover-bg-color: #700000;
+    --navbar-item-focus-bg-color: #700000;
+    --navbar-item-logout-button: #700000;
+    --navbar-item-logout-button-hover: #6a0000;
+    --navbar-item-border-color: #f72f2f;
+    --output-bg-color: #0f151d;
+    --output-error-bg-color: #e74c3c;
+    --output-success-bg-color: /*#2ecc71*/ #2ecc71;
+    --output-text-color: #ecf0f1;
+    --output-font-family: 'Fira Code';
+    --output-font-size: 14px;
+    --output-max-height: 500px;
+    --navbar-item-icon-color: #ecf0f1;
+    --navbar-height: 60px;
+    --icon-size: 22px;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-size: 16px; /* Basis-Schriftgröße */
+}
+
+.container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+form {
+    background-color: var(--form-bg-color);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin: 0 auto;
+    margin-top: 60px;
+    max-width: 400px;
+}
+
+form input[type="text"],
+form input[type="password"],
+form input[type="submit"] {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid var(--form-border-color);
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+form input[type="submit"] {
+    background-color: var(--form-submit-bg-color);
+    color: var(--text-color);
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+form input[type="submit"]:hover {
+    background-color: var(--form-submit-hover-bg-color);
+}
+
+form select {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid var(--form-border-color);
+    border-radius: 5px;
+    font-size: 16px;
+    background-color: var(--form-bg-color);
+    color: var(--text-color); /* Optional: Textfarbe anpassen */
+    cursor: pointer;
+}
+
+form select:focus {
+    outline: none;
+    border-color: var(--form-submit-bg-color); /* Optionale Farbe beim Fokussieren */
+}
+
+header {
+    background-color: var(--header-bg-color);
+    color: var(--text-color);
+    padding: 10px 0;
+    text-align: center;
+    font-size: 24px;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+}
+
+a {
+    color: var(--text-color);
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: var(--link-hover-decoration);
+}
+
+h1 {
+    font-size: 36px;
+    text-align: center;
+    margin-top: 20px;
+}
+
+.welcome {
+    text-align: center;
+    font-size: 20px;
+    margin-top: 40px;
+}
+
+.error, .success {
+    text-align: center;
+    margin-top: 55px;
+    padding: 15px;
+    border-radius: 5px;
+}
+
+
+/* Style für die Fehler-/Erfolgsmeldung */
+.message {
+    text-align: center;
+    position: relative;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid var(--form-border-color);
+    border-radius: 5px;
+    background-color: var(--output-error-bg-color);
+    color: var(--text-color);
+}
+.message.top {
+    margin-top: 40px;
+}
+.message.success {
+    background-color: var(--output-success-bg-color);
+    color: var(--text-color);
+}
+.message .close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+    font-size: 18px;
+    color: var(--text-color);
+}
+
+.error {
+    background-color: var(--output-error-bg-color);
+    color: var(--text-color);
+}
+
+.success {
+    background-color: var(--output-success-bg-color);
+    color: var(--text-color);
+}
+
+#output {
+    background-color: var(--output-bg-color);
+    color: var(--output-text-color);
+    border-radius: 8px;
+    padding: 20px;
+    margin-top: 20px;
+    font-family: var(--output-font-family);
+    white-space: nowrap;
+    overflow-y: auto;
+    overflow-x: auto;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    font-size: var(--output-font-size);
+    text-align: left;
+    padding-left: 80px;
+    padding-right: 50px;
+}
+
+#output.error {
+    background-color: var(--output-error-bg-color);
+    color: var(--text-color);
+}
+
+#output.success {
+    background-color: var(--output-success-bg-color);
+    color: var(--text-color);
+}
+
+/* Navbar */
+.navbar {
+    display: flex;
+    flex-direction: row;
+    width: auto;
+    background-color: var(--navbar-bg-color);
+    justify-content: flex-end;
+    align-items: center;
+    height: var(--navbar-height);
+    padding: 0 20px;
+}
+
+.navbar .left {
+    display: flex;
+    justify-content: flex-start;
+    margin-right: auto;
+}
+
+.navbar .left a,
+.navbar a {
+    text-decoration: none;
+    margin: 0 10px;
+}
+
+.value {
+    background-color: var(--navbar-item-bg-color);
+    border: none;
+    padding: 10px;
+    color: var(--text-color);
+    display: flex;
+    align-items: center; /* Vertikale Zentrierung */
+    gap: 10px;
+    cursor: pointer;
+    border-radius: 4px;
+    font-size: 16px;
+    margin: 0 15px;
+    position: relative;
+    transition: background-color 0.3s ease;
+}
+
+.value:not(.active):hover {
+    background-color: var(--navbar-item-hover-bg-color);
+}
+
+/* Der blaue Strich wird nur angezeigt, wenn die Klasse 'active' vorhanden ist */
+.value.active::before {
+    content: "";
+    position: absolute;
+    top: 5px;
+    left: -10px;
+    width: 5px;
+    height: 80%;
+    background-color: var(--navbar-item-border-color);
+    border-radius: 5px;
+    opacity: 1;
+}
+
+/* Keine Linie, wenn nicht aktiv */
+.value:not(.active)::before {
+    opacity: 0;
+}
+
+.value i {
+    color: var(--navbar-item-icon-color);
+    font-size: var(--icon-size);
+}
+
+/* Dropdown-Container */
+.dropdown {
+    position: relative;
+}
+
+/* Dropdown-Button (Benutzername) */
+.dropdown .value {
+    background-color: var(--navbar-item-bg-color);
+    border: none;
+    padding: 10px;
+    color: var(--text-color);
+    display: flex;
+    align-items: center; /* Zentriert Benutzername und Avatar vertikal */
+    gap: 10px;
+    cursor: pointer;
+    border-radius: 4px;
+    font-size: 16px;
+    margin: 0;
+    transition: background-color 0.3s ease;
+}
+
+/* Hover-Effekt für den Dropdown-Button */
+.dropdown .value:hover {
+    background-color: var(--navbar-item-hover-bg-color);
+}
+
+/* Dropdown-Menü */
+.dropdown-content {
+    display: none; /* Standardmäßig versteckt */
+    position: absolute;
+    background-color: var(--navbar-bg-color);
+    min-width: 160px;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+    right: 0;
+    top: calc(100% + 10px); /* Abstand von 10px unterhalb des Buttons */
+    border-radius: 5px;
+    padding: 10px 0;
+    opacity: 0; /* Unsichtbar standardmäßig */
+    transform: translateY(-10px); /* Etwas höher positioniert für Animation */
+    transition: opacity 0.3s ease, transform 0.3s ease; /* Animations-Übergang */
+}
+
+/* Dropdown wird angezeigt, wenn die Klasse 'open' hinzugefügt wird */
+.dropdown.open .dropdown-content {
+    display: block;
+    opacity: 1; /* Sichtbar */
+    transform: translateY(0); /* In die endgültige Position verschoben */
+}
+
+/* Dropdown-Menü-Items */
+.dropdown-content a {
+    color: var(--text-color);
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    transition: background-color 0.3s ease;
+}
+
+/* Hover-Effekt für Dropdown-Menü-Items */
+.dropdown-content a:hover {
+    background-color: var(--navbar-item-hover-bg-color);
+    border-radius: 4px; /* Abgerundete Ecken bei Hover */
+}
+
+/* Logout-Button im Dropdown */
+.logout-btn {
+    text-align: center;
+    background-color: var(--navbar-item-logout-button);
+    color: var(--text-color);
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+/* Hover-Effekt für Logout-Button */
+.logout-btn:hover {
+    background-color: var(--navbar-item-logout-button-hover);
+}
+
+.avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+}
+
+/* Eingabefeld mit Icon und unterem Strich */
+.input-container {
+    display: flex;
+    align-items: center;
+    /* border-bottom: 2px solid var(--form-border-color); Strich unter dem Input */
+    padding: 10px;
+    margin: 0 auto;
+    max-width: 400px;
+}
+.input-container.border-bottom{
+    display: flex;
+    align-items: center;
+    border-bottom: 2px solid var(--form-border-color); /* Strich unter dem Input */
+    padding: 10px;
+    margin: 0 auto;
+    max-width: 400px;
+}
+
+/* Icon-Styling */
+.input-container i {
+    color: var(--text-color);
+    font-size: 20px; /* Größe des Icons */
+    margin-right: 10px; /* Abstand zwischen Icon und Input */
+}
+
+/* Eingabefeld */
+.input-container input {
+    background-color: transparent; /* Hintergrund des Eingabefeldes transparent */
+    border: none; /* Kein Rand um das Eingabefeld */
+    color: var(--text-color);
+    font-size: 16px;
+    width: 100%;
+    padding: 10px;
+    outline: none; /* Entfernt die Umrandung bei Fokussierung */
+}
+
+/* Eingabefeld Fokus (unter dem Eingabefeld bleibt der Strich sichtbar) */
+.input-container input:focus {
+    border-bottom: 2px solid var(--form-submit-bg-color); /* Optional: Fokussierung mit einer anderen Farbe für den Strich */
+}
+
+summary {
+    list-style: none;
+}
+
+.inner {
+    padding-left: 100px;
+}
+
+
+.weather-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    max-width: 400px;
+    width: 100%;
+}
+
+.weather-card {
+    background-color: var(--output-bg-color);
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    width: 100%;
+}
+
+.weather-header {
+    margin-bottom: 20px;
+}
+
+.weather-header h2 {
+    font-size: 24px;
+    margin: 0;
+    color: var(--text-color);
+}
+
+.weather-header p {
+    font-size: 16px;
+    color: var(--text-color);
+    margin: 5px 0;
+}
+
+.weather-main {
+    margin-bottom: 20px;
+}
+
+.weather-icon {
+    width: 80px;
+    height: 80px;
+    margin: 20px 0;
+}
+
+.weather-main p {
+    font-size: 18px;
+    color: var(--text-color);
+}
+
+#temperature {
+    font-size: 48px;
+    font-weight: bold;
+    color: var(--output-error-bg-color);
+}
+
+.weather-footer p {
+    font-size: 14px;
+    color: var(--text-color);
+}
+
+.weather-footer span {
+    font-weight: bold;
+    color: var(--text-color);
+}
+
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    header {
+        font-size: 20px;
+        padding: 8px 0;
+    }
+
+    .navbar {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 10px;
+    }
+
+    .navbar .value {
+        margin: 5px 0;
+        font-size: 14px;
+        width: 100%;
+        text-align: left;
+    }
+
+    .dropdown-content {
+        position: relative;
+        width: 100%;
+        border: none;
+    }
+}
+
+@media (max-width: 480px) {
+    body {
+        font-size: 14px;
+    }
+
+    .container {
+        padding: 5px;
+    }
+
+    form {
+        padding: 15px;
+    }
+
+    .navbar .value {
+        padding: 8px;
+        font-size: 12px;
+    }
+
+    header {
+        font-size: 18px;
+        padding: 5px 0;
+    }
+}
